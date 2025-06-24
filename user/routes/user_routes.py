@@ -16,7 +16,10 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/user",
+    tags=["user"],
+)
 
 def get_password_hash(password):
     return pwd_context.hash(password)

@@ -14,7 +14,10 @@ SECRET_KEY = settings.SECRET_KEY
 ALGORITHM = settings.ALGORITHM
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/todo",
+    tags=["todo"],
+)
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(

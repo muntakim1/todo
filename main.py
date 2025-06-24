@@ -4,5 +4,5 @@ from user.routes import user_routes
 
 app = FastAPI()
 
-app.include_router(todo_routes.router, prefix="/todo")
-app.include_router(user_routes.router, prefix="/user")
+app.include_router(todo_routes.router)
+app.include_router(user_routes.router)
