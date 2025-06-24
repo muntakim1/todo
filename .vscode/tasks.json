@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Alembic: Autogenerate Migration",
+			"type": "shell",
+			"command": "alembic revision --autogenerate -m 'auto migration'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Alembic: Upgrade Head",
+			"type": "shell",
+			"command": "alembic upgrade head",
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}
