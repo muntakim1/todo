@@ -32,6 +32,28 @@ git clone https://github.com/muntakim1/todo.git
 cd todo
 ```
 
+## Usage with VS Code Tasks
+
+This project provides a set of pre-configured VS Code tasks for common development and database operations. To use them, open the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`), select `Tasks: Run Task`, and choose from the following:
+
+| Task Label                        | Description                                       |
+| --------------------------------- | ------------------------------------------------- |
+| Alembic: Autogenerate Migration   | Create a new Alembic migration from model changes |
+| Alembic: Upgrade Head             | Apply all Alembic migrations to the database      |
+| Install Dependency using uv       | Install all dependencies using uv                 |
+| Run FastAPI Server                | Start the FastAPI server with uv                  |
+| Seed Initial Data                 | Seed the database with admin, users, and todos    |
+| Add One Admin Account             | Add only the admin user to the database           |
+| Add Dummy Users and Todos         | Add dummy users and todos                         |
+| Reset DB (Delete All Data)        | Delete all users and todos from the database      |
+| Drop and Recreate DB (SQLAlchemy) | Drop and recreate all tables using SQLAlchemy     |
+| Reset & Seed DB                   | Reset the DB and seed initial data                |
+| Create environment variables file | Copy .env.local to .env for environment setup     |
+
+**Tip:** You can chain these tasks for a full reset and reseed: run `Drop and Recreate DB (SQLAlchemy)`, then `Alembic: Upgrade Head`, then `Seed Initial Data`.
+
+### Manual Process
+
 ### 2. Set up the environment
 
 Use Uv to create a virtual environment and activate it:

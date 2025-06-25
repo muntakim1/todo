@@ -18,7 +18,7 @@ if config.config_file_name is not None:
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Todo.model.todo_model import Base as TodoBase
-from Todo.user.model.user_model import Base as UserBase
+from user.model.user_model import Base as UserBase
 
 # add your model's MetaData object here
 # for 'autogenerate' support

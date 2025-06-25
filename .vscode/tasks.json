@@ -1,17 +1,80 @@
-{
+ {
 	"version": "2.0.0",
 	"tasks": [
 		{
 			"label": "Alembic: Autogenerate Migration",
 			"type": "shell",
-			"command": "alembic revision --autogenerate -m 'auto migration'",
+			"command": "echo 'auto-generate..' && ./.venv/bin/python -m alembic revision --autogenerate -m 'migration'",
 			"group": "build",
 			"problemMatcher": []
 		},
 		{
 			"label": "Alembic: Upgrade Head",
 			"type": "shell",
-			"command": "alembic upgrade head",
+			"command": "echo 'migrating...' && ./.venv/bin/python -m alembic upgrade head",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Dependency using uv",
+			"type": "shell",
+			"command": "echo 'installing dependencies...' && uv sync",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Run FastAPI Server",
+			"type": "shell",
+			"command": "echo 'starting FastAPI server...' && uv run fastapi dev",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Seed Initial Data",
+			"type": "shell",
+			"command": ".venv/bin/python seed_data.py",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Add One Admin Account",
+			"type": "shell",
+			"command": ".venv/bin/python -c 'from seed_data import add_admin_account; add_admin_account()'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Add Dummy Users and Todos",
+			"type": "shell",
+			"command": ".venv/bin/python -c 'from seed_data import add_dummy_users_and_todos; add_dummy_users_and_todos()'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Reset DB (Delete All Data)",
+			"type": "shell",
+			"command": ".venv/bin/python -c 'from seed_data import reset_db; reset_db()'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Drop and Recreate DB (SQLAlchemy)",
+			"type": "shell",
+			"command": ".venv/bin/python -c 'from seed_data import drop_and_recreate_db; drop_and_recreate_db()'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Reset & Seed DB",
+			"type": "shell",
+			"command": ".venv/bin/python -c 'from seed_data import reset_and_seed_db; reset_and_seed_db()'",
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "Create environment variables file",
+			"type": "shell",
+			"command": "cp .env.local .env && echo 'Environment variables file created.'",
 			"group": "build",
 			"problemMatcher": []
 		}
